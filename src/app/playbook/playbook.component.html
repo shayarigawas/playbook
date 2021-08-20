@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <span>PlayBook</span>
+</mat-toolbar>
+<div fxLayout="row" cdkDropListGroup>
+  <div fxFlex="20%" fxLayoutAlign="center" class="left-panel ">
+    <div fxLayout="column">
+      <p fxLayoutAlign="center">Slides</p>
+      <div cdkDropList [cdkDropListData]="slides" >
+        <div class="slide" *ngFor="let item of slides" [ngStyle]="{'background-color': item.bgColor}" cdkDrag></div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="60%" fxLayoutAlign="center" >
+    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="drawings" class="horizonatl-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="slide" *ngFor="let item of drawings" [ngStyle]="{'background-color': item.bgColor}" cdkDrag>
+        <img *ngIf="item.image" class="image-over" cdkDrag src="../../assets/images/{{item.image}}">
+      </div>
+    </div>
+  </div>
+  <div fxFlex="20%"  class="right-panel">
+    <div fxLayout="column">
+      <p fxLayoutAlign="center">Sketches</p>
+      <div cdkDropList [cdkDropListData]="sketches">
+          <img *ngFor="let sketch of sketches" class="sketch" cdkDrag src="../../assets/images/{{sketch.image}}"></div>
+    </div>
+  </div>
+</div>
+
+<!-- <div cdkDropListGroup>
+  <div class="example-container">
+    <h2>To do</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="slides"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="slide" *ngFor="let item of slides" [ngStyle]="{'background-color': item.bgColor}" cdkDrag></div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Drawing</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="drawings"
+      class="example-list"
+      (cdkDropListDropped)="drawingDrop($event)">
+      <div class="slide" *ngFor="let item of drawings" [ngStyle]="{'background-color': item.bgColor}" cdkDrag>
+        <img *ngIf="item.image" class="image-over" cdkDrag src="../../assets/images/{{item.image}}">
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="sketches"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="sketch" *ngFor="let sketch of sketches" >
+        <img cdkDrag src="../../assets/images/{{sketch.image}}"></div>
+    </div>
+  </div>
+</div> -->
