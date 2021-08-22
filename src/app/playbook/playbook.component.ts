@@ -13,19 +13,19 @@ export class PlaybookComponent implements OnInit {
     "image": ''
   },
   {
-    "name": 'slide1',
+    "name": 'slide2',
     "bgColor": 'blue',
     "image": ''
   }, {
-    "name": 'slide1',
+    "name": 'slide3',
     "bgColor": 'green',
     "image": ''
   }, {
-    "name": 'slide1',
+    "name": 'slide3',
     "bgColor": 'purple',
     "image": ''
   }, {
-    "name": 'slide1',
+    "name": 'slide4',
     "bgColor": 'pink',
     "image": ''
   }]
@@ -52,7 +52,7 @@ export class PlaybookComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     if(event.container.data.length > 0) {
-         if(event.container.data.some(item => item['name'] === 'slide1')) {
+         if(event.container.data.some(item => item['name'].includes('slide'))) {
            if(event.previousContainer.data[event.previousIndex]['image']) {
             if(event.container.data[event.currentIndex] !== undefined) {
               event.container.data[event.currentIndex]['image'] =  event.previousContainer.data[event.previousIndex]['image'];
