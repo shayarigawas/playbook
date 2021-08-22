@@ -54,14 +54,21 @@ export class PlaybookComponent implements OnInit {
     if(event.container.data.length > 0) {
          if(event.container.data.some(item => item['name'].includes('slide'))) {
            if(event.previousContainer.data[event.previousIndex]['image']) {
-            if(event.container.data[event.currentIndex] !== undefined) {
+            if(event.container.data[event.currentIndex] !== undefined && event.container.data[event.currentIndex]['name'] !== '' && event.container.data[event.currentIndex]['image'] === '') {
               event.container.data[event.currentIndex]['image'] =  event.previousContainer.data[event.previousIndex]['image'];
+            } else {
+              if(event.previousContainer.data[event.previousIndex]['name']) {
+              copyArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex);
+              }
             }
           } else {
-             copyArrayItem(event.previousContainer.data,
-              event.container.data,
-              event.previousIndex,
-              event.currentIndex);
+              copyArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex);
            }
          }
     } else {
